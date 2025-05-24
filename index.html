@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt Response Comparison</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .view-switcher {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            gap: 10px;
+        }
+        .view-btn {
+            padding: 8px 16px;
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .view-btn.active {
+            background-color: #2196F3;
+            color: white;
+            border-color: #2196F3;
+        }
+        .image-selector {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        select {
+            padding: 8px 12px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            min-width: 300px;
+        }
+        .comparison {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+        }
+        .image-container {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .image-container img {
+            max-width: 100%;
+            max-height: 400px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            object-fit: contain;
+            width: auto;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .responses {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            width: 100%;
+            justify-content: space-between;
+            margin: 0 auto;
+            max-width: 1100px;
+        }
+        .response {
+            flex: 1;
+            min-width: 300px;
+            max-width: calc(50% - 20px);
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+        .response h3 {
+            margin-top: 0;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            color: #444;
+        }
+        .section {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #ddd;
+            position: relative;
+        }
+        .section:last-child {
+            border-bottom: none;
+        }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .description {
+            white-space: pre-line;
+        }
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        .tag {
+            background-color: #e0e0e0;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+        }
+        .vote-btn {
+            padding: 4px 8px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+        .vote-btn:hover {
+            background-color: #45a049;
+        }
+        .vote-btn.selected {
+            background-color: #2196F3;
+        }
+        .stats {
+            margin-top: 20px;
+            text-align: center;
+            padding: 15px;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .stat-item {
+            background-color: white;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .nav-btn {
+            padding: 8px 16px;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .nav-btn:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        .loading {
+            text-align: center;
+            padding: 30px;
+            font-size: 18px;
+            font-style: italic;
+            color: #666;
+        }
+        #gallery-view {
+            display: none;
+        }
+        .gallery-item {
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #ccc;
+        }
+        .gallery-image {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .gallery-image img {
+            max-width: 100%;
+            max-height: 400px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            object-fit: contain;
+            width: auto;
+            height: auto;
+        }
+        .gallery-responses {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            width: 100%;
+            justify-content: space-between;
+        }
+        .gallery-responses .response {
+            flex: 1;
+            min-width: 300px;
+            max-width: calc(50% - 20px);
+        }
+        .progress-info {
+            text-align: center;
+            margin: 10px 0 20px;
+            font-weight: bold;
+            color: #555;
+        }
+        .top-nav {
+            position: sticky;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(5px);
+            border-radius: 4px;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 15px;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            font-size: 18px;
+        }
+        .export-container {
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Prompt Response Comparison</h1>
+        
+        <div class="view-switcher">
+            <button id="single-view-btn" class="view-btn active">Single Image View</button>
+            <button id="gallery-view-btn" class="view-btn">Gallery View</button>
+        </div>
+        
+        <div id="single-view">
+            <div class="image-selector">
+                <select id="image-select">
+                    <option value="">Select an image to compare...</option>
+                </select>
+            </div>
+            
+            <div class="comparison">
+                <div class="image-container">
+                    <img id="source-image" src="" alt="Source image">
+                    <p id="image-name"></p>
+                </div>
+                
+                <div class="responses">
+                    <div class="response">
+                        <h3 id="p1-header"></h3>
+                        
+                        <div class="section">
+                            <div class="section-header">
+                                <strong>Title:</strong>
+                                <button class="vote-btn" id="p1-title-vote-btn" data-section="title">Select Title</button>
+                            </div>
+                            <div id="p1-title-content"></div>
+                        </div>
+                        
+                        <div class="section">
+                            <div class="section-header">
+                                <strong>Description:</strong>
+                                <button class="vote-btn" id="p1-desc-vote-btn" data-section="description">Select Description</button>
+                            </div>
+                            <div id="p1-description-content" class="description"></div>
+                        </div>
+                        
+                        <div class="section">
+                            <div class="section-header">
+                                <strong>Tags:</strong>
+                                <button class="vote-btn" id="p1-tags-vote-btn" data-section="tags">Select Tags</button>
+                            </div>
+                            <div id="p1-tags-content" class="tags-container"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="response">
+                        <h3 id="p2-header"></h3>
+                        
+                        <div class="section">
+                            <div class="section-header">
+                                <strong>Title:</strong>
+                                <button class="vote-btn" id="p2-title-vote-btn" data-section="title">Select Title</button>
+                            </div>
+                            <div id="p2-title-content"></div>
+                        </div>
+                        
+                        <div class="section">
+                            <div class="section-header">
+                                <strong>Description:</strong>
+                                <button class="vote-btn" id="p2-desc-vote-btn" data-section="description">Select Description</button>
+                            </div>
+                            <div id="p2-description-content" class="description"></div>
+                        </div>
+                        
+                        <div class="section">
+                            <div class="section-header">
+                                <strong>Tags:</strong>
+                                <button class="vote-btn" id="p2-tags-vote-btn" data-section="tags">Select Tags</button>
+                            </div>
+                            <div id="p2-tags-content" class="tags-container"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="navigation">
+                <button id="prev-btn" class="nav-btn" disabled>Previous Image</button>
+                <button id="next-btn" class="nav-btn" disabled>Next Image</button>
+            </div>
+        </div>
+        
+        <div id="gallery-view">
+            <div class="top-nav">
+                <div class="progress-info" id="progress-info">Reviewed: 0/0 images</div>
+                <button id="jump-to-next" class="nav-btn">Jump to Next Unrated</button>
+            </div>
+            
+            <!-- Gallery items will be dynamically inserted here -->
+            <div id="gallery-container"></div>
+        </div>
+        
+        <div class="stats">
+            <div id="stats-display"><strong>Section Preferences</strong></div>
+            <div class="stats-grid">
+                <div class="stat-item" id="title-stats"></div>
+                <div class="stat-item" id="description-stats"></div>
+                <div class="stat-item" id="tags-stats"></div>
+            </div>
+            <div class="export-container">
+                <button id="export-btn" class="nav-btn">Export Results</button>
+            </div>
+        </div>
+    </div>
+    
+    <button id="back-to-top" class="back-to-top" title="Back to Top">↑</button>
+
+    <!-- Load the data.js file -->
+    <script src="data.js"></script>
+    
+    <script>
+        // Check if promptKey1 and promptKey2 are defined (from data.js)
+        if (typeof promptKey1 === 'undefined' || typeof promptKey2 === 'undefined') {
+            alert('Error: promptKey1 or promptKey2 not defined in data.js. Please regenerate data.js.');
+            // Potentially stop further script execution or show a message in the body
+            document.body.innerHTML = '<div class="loading">Configuration error. Please check data.js.</div>';
+            // throw new Error("Prompt keys not defined in data.js"); // or handle more gracefully
+        }
+
+        // Helper to get the numeric part of the prompt key (e.g., "prompt_3" -> "3")
+        const getPromptNum = (promptKey) => promptKey.split('_')[1];
+        const promptNum1 = getPromptNum(promptKey1);
+        const promptNum2 = getPromptNum(promptKey2);
+
+        // DOM elements
+        const singleViewBtn = document.getElementById('single-view-btn');
+        const galleryViewBtn = document.getElementById('gallery-view-btn');
+        const singleView = document.getElementById('single-view');
+        const galleryView = document.getElementById('gallery-view');
+        const galleryContainer = document.getElementById('gallery-container');
+        const backToTopBtn = document.getElementById('back-to-top');
+        const jumpToNextBtn = document.getElementById('jump-to-next');
+        const progressInfo = document.getElementById('progress-info');
+        
+        const imageSelect = document.getElementById('image-select');
+        const sourceImage = document.getElementById('source-image');
+        const imageName = document.getElementById('image-name');
+
+        // Dynamic DOM elements for prompt 1
+        const p1Header = document.getElementById('p1-header');
+        const p1TitleVoteBtn = document.getElementById('p1-title-vote-btn');
+        const p1TitleContent = document.getElementById('p1-title-content');
+        const p1DescVoteBtn = document.getElementById('p1-desc-vote-btn');
+        const p1DescriptionContent = document.getElementById('p1-description-content');
+        const p1TagsVoteBtn = document.getElementById('p1-tags-vote-btn');
+        const p1TagsContent = document.getElementById('p1-tags-content');
+
+        // Dynamic DOM elements for prompt 2
+        const p2Header = document.getElementById('p2-header');
+        const p2TitleVoteBtn = document.getElementById('p2-title-vote-btn');
+        const p2TitleContent = document.getElementById('p2-title-content');
+        const p2DescVoteBtn = document.getElementById('p2-desc-vote-btn');
+        const p2DescriptionContent = document.getElementById('p2-description-content');
+        const p2TagsVoteBtn = document.getElementById('p2-tags-vote-btn');
+        const p2TagsContent = document.getElementById('p2-tags-content');
+
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const titleStats = document.getElementById('title-stats');
+        const descriptionStats = document.getElementById('description-stats');
+        const tagsStats = document.getElementById('tags-stats');
+        
+        // Current image index
+        let currentIndex = -1;
+        
+        // User preferences - now stored by section
+        const preferences = JSON.parse(localStorage.getItem('sectionPreferences')) || {
+            title: {},
+            description: {},
+            tags: {}
+        };
+        
+        // View switching
+        singleViewBtn.addEventListener('click', () => {
+            singleView.style.display = 'block';
+            galleryView.style.display = 'none';
+            singleViewBtn.classList.add('active');
+            galleryViewBtn.classList.remove('active');
+            
+            // Ensure an image is selected when switching to single view
+            if (currentIndex === -1 && imageData.length > 0) {
+                currentIndex = 0;
+                imageSelect.value = currentIndex;
+                updateDisplay(currentIndex);
+            }
+        });
+        
+        galleryViewBtn.addEventListener('click', () => {
+            singleView.style.display = 'none';
+            galleryView.style.display = 'block';
+            singleViewBtn.classList.remove('active');
+            galleryViewBtn.classList.add('active');
+            
+            generateGalleryView(); // Always regenerate the gallery
+            
+            updateProgressInfo();
+        });
+        
+        // Back to top button
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.style.display = 'block';
+            } else {
+                backToTopBtn.style.display = 'none';
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Initialize image selector
+        function initImageSelector() {
+            imageData.forEach((data, index) => {
+                const option = document.createElement('option');
+                option.value = index;
+                option.textContent = data.name;
+                imageSelect.appendChild(option);
+            });
+        }
+
+        // Initialize static text based on prompt keys
+        function initializeStaticText() {
+            p1Header.textContent = `Prompt ${promptNum1}`;
+            p1TitleVoteBtn.setAttribute('data-prompt', promptNum1);
+            p1DescVoteBtn.setAttribute('data-prompt', promptNum1);
+            p1TagsVoteBtn.setAttribute('data-prompt', promptNum1);
+
+            p2Header.textContent = `Prompt ${promptNum2}`;
+            p2TitleVoteBtn.setAttribute('data-prompt', promptNum2);
+            p2DescVoteBtn.setAttribute('data-prompt', promptNum2);
+            p2TagsVoteBtn.setAttribute('data-prompt', promptNum2);
+            
+            // Stats display will be updated by countPreferences
+        }
+
+        // Update image and responses for single view
+        function updateDisplay(index) {
+            const data = imageData[index];
+            if (data.imageUrl) {
+                sourceImage.src = data.imageUrl;
+            } else if (data.localImagePath) {
+                sourceImage.src = data.localImagePath;
+            } else {
+                sourceImage.src = ""; 
+                sourceImage.alt = "Image not available";
+            }
+            imageName.textContent = data.name;
+            
+            // Data for the first configured prompt (e.g., prompt3)
+            if (data[promptKey1]) {
+                p1TitleContent.textContent = data[promptKey1].title;
+                p1DescriptionContent.textContent = data[promptKey1].description;
+                p1TagsContent.innerHTML = '';
+                data[promptKey1].tags.forEach(tag => {
+                    const tagEl = document.createElement('span');
+                    tagEl.className = 'tag';
+                    tagEl.textContent = tag;
+                    p1TagsContent.appendChild(tagEl);
+                });
+            } else {
+                p1TitleContent.textContent = 'N/A';
+                p1DescriptionContent.textContent = 'N/A';
+                p1TagsContent.innerHTML = '';
+            }
+            
+            // Data for the second configured prompt (e.g., prompt4)
+            if (data[promptKey2]) {
+                p2TitleContent.textContent = data[promptKey2].title;
+                p2DescriptionContent.textContent = data[promptKey2].description;
+                p2TagsContent.innerHTML = '';
+                data[promptKey2].tags.forEach(tag => {
+                    const tagEl = document.createElement('span');
+                    tagEl.className = 'tag';
+                    tagEl.textContent = tag;
+                    p2TagsContent.appendChild(tagEl);
+                });
+            } else {
+                 p2TitleContent.textContent = 'N/A';
+                p2DescriptionContent.textContent = 'N/A';
+                p2TagsContent.innerHTML = '';
+            }
+            
+            // Update vote buttons based on preferences
+            updateVoteButtons(data.name);
+            
+            // Update navigation buttons
+            prevBtn.disabled = index === 0;
+            nextBtn.disabled = index === imageData.length - 1;
+        }
+        
+        // Generate the gallery view
+        function generateGalleryView() {
+            galleryContainer.innerHTML = '';
+            
+            imageData.forEach((data, index) => {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item';
+                galleryItem.id = `gallery-item-${index}`;
+                
+                // Image with name
+                const imageDiv = document.createElement('div');
+                imageDiv.className = 'gallery-image';
+                
+                const img = document.createElement('img');
+                if (data.imageUrl) {
+                    img.src = data.imageUrl;
+                } else if (data.localImagePath) {
+                    img.src = data.localImagePath;
+                } else {
+                    img.src = ""; // Or a placeholder image
+                    img.alt = "Image not available";
+                }
+                
+                const nameLabel = document.createElement('p');
+                nameLabel.textContent = data.name;
+                
+                imageDiv.appendChild(img);
+                imageDiv.appendChild(nameLabel);
+                galleryItem.appendChild(imageDiv);
+                
+                // Responses container
+                const responsesDiv = document.createElement('div');
+                responsesDiv.className = 'gallery-responses';
+                
+                // Response for the first configured prompt
+                const prompt1DataHtml = data[promptKey1] ? `
+                    <h3>Prompt ${promptNum1}</h3>
+                    <div class="section">
+                        <div class="section-header"><strong>Title:</strong><button class="vote-btn" data-prompt="${promptNum1}" data-section="title" data-image="${data.name}">Select Title</button></div>
+                        <div>${data[promptKey1].title}</div>
+                    </div>
+                    <div class="section">
+                        <div class="section-header"><strong>Description:</strong><button class="vote-btn" data-prompt="${promptNum1}" data-section="description" data-image="${data.name}">Select Description</button></div>
+                        <div class="description">${data[promptKey1].description}</div>
+                    </div>
+                    <div class="section">
+                        <div class="section-header"><strong>Tags:</strong><button class="vote-btn" data-prompt="${promptNum1}" data-section="tags" data-image="${data.name}">Select Tags</button></div>
+                        <div class="tags-container">${data[promptKey1].tags.map(tag => `<span class="tag">${tag}</span>`).join('')}</div>
+                    </div>
+                ` : `<h3>Prompt ${promptNum1}</h3><p>Data not available.</p>`;
+
+                const key1Div = document.createElement('div');
+                key1Div.className = 'response';
+                key1Div.innerHTML = prompt1DataHtml;
+                
+                // Response for the second configured prompt
+                const prompt2DataHtml = data[promptKey2] ? `
+                    <h3>Prompt ${promptNum2}</h3>
+                    <div class="section">
+                        <div class="section-header"><strong>Title:</strong><button class="vote-btn" data-prompt="${promptNum2}" data-section="title" data-image="${data.name}">Select Title</button></div>
+                        <div>${data[promptKey2].title}</div>
+                    </div>
+                    <div class="section">
+                        <div class="section-header"><strong>Description:</strong><button class="vote-btn" data-prompt="${promptNum2}" data-section="description" data-image="${data.name}">Select Description</button></div>
+                        <div class="description">${data[promptKey2].description}</div>
+                    </div>
+                    <div class="section">
+                        <div class="section-header"><strong>Tags:</strong><button class="vote-btn" data-prompt="${promptNum2}" data-section="tags" data-image="${data.name}">Select Tags</button></div>
+                        <div class="tags-container">${data[promptKey2].tags.map(tag => `<span class="tag">${tag}</span>`).join('')}</div>
+                    </div>
+                ` : `<h3>Prompt ${promptNum2}</h3><p>Data not available.</p>`;
+
+                const key2Div = document.createElement('div');
+                key2Div.className = 'response';
+                key2Div.innerHTML = prompt2DataHtml;
+                
+                responsesDiv.appendChild(key1Div);
+                responsesDiv.appendChild(key2Div);
+                galleryItem.appendChild(responsesDiv);
+                
+                galleryContainer.appendChild(galleryItem);
+            });
+            
+            // Update all vote buttons in the gallery
+            updateAllGalleryButtons();
+        }
+        
+        // Update progress info
+        function updateProgressInfo() {
+            const totalImages = imageData.length;
+            let reviewedCount = 0;
+            
+            imageData.forEach(data => {
+                const imageName = data.name;
+                let hasReview = false;
+                
+                // Check if any section has been reviewed
+                if (preferences.title[imageName] || 
+                    preferences.description[imageName] || 
+                    preferences.tags[imageName]) {
+                    hasReview = true;
+                }
+                
+                if (hasReview) {
+                    reviewedCount++;
+                }
+            });
+            
+            progressInfo.textContent = `Reviewed: ${reviewedCount}/${totalImages} images`;
+        }
+        
+        // Jump to next unrated image
+        jumpToNextBtn.addEventListener('click', () => {
+            for (let i = 0; i < imageData.length; i++) {
+                const data = imageData[i];
+                const imageName = data.name;
+                
+                // Check if any section has not been reviewed
+                if (!preferences.title[imageName] || 
+                    !preferences.description[imageName] || 
+                    !preferences.tags[imageName]) {
+                    
+                    const galleryItem = document.getElementById(`gallery-item-${i}`);
+                    if (galleryItem) {
+                        galleryItem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        return;
+                    }
+                }
+            }
+            
+            // If all are rated
+            alert('All images have been fully rated!');
+        });
+        
+        // Update vote buttons based on current preferences for single view
+        function updateVoteButtons(imageName) {
+            // Reset all buttons
+            document.querySelectorAll('.vote-btn').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            
+            // Set selected buttons based on preferences for each section
+            const sections = ['title', 'description', 'tags'];
+            sections.forEach(section => {
+                const selectedPrompt = preferences[section][imageName];
+                if (selectedPrompt) {
+                    const btn = document.querySelector(`.vote-btn[data-prompt="${selectedPrompt}"][data-section="${section}"]:not([data-image])`);
+                    if (btn) {
+                        btn.classList.add('selected');
+                    }
+                }
+            });
+        }
+        
+        // Update all gallery buttons based on preferences
+        function updateAllGalleryButtons() {
+            // Reset all buttons
+            document.querySelectorAll('.vote-btn[data-image]').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            
+            // Set selected buttons based on preferences for each section and image
+            const sections = ['title', 'description', 'tags'];
+            
+            sections.forEach(section => {
+                Object.entries(preferences[section]).forEach(([imageName, promptNum]) => {
+                    const btn = document.querySelector(`.vote-btn[data-prompt="${promptNum}"][data-section="${section}"][data-image="${imageName}"]`);
+                    if (btn) {
+                        btn.classList.add('selected');
+                    }
+                });
+            });
+        }
+        
+        // Count preferences by section
+        function countPreferences() {
+            // Initialize counters
+            const counts = {
+                title: {}, description: {}, tags: {}
+            };
+            counts.title[promptNum1] = 0; counts.title[promptNum2] = 0;
+            counts.description[promptNum1] = 0; counts.description[promptNum2] = 0;
+            counts.tags[promptNum1] = 0; counts.tags[promptNum2] = 0;
+            
+            // Count preferences for each section
+            Object.keys(preferences).forEach(section => {
+                Object.values(preferences[section]).forEach(votePromptNum => {
+                    if (counts[section] && counts[section].hasOwnProperty(votePromptNum)) {
+                         counts[section][votePromptNum]++;
+                    }
+                });
+            });
+            
+            // Update statistics display
+            titleStats.textContent = `Title: Prompt ${promptNum1} (${counts.title[promptNum1]}) - Prompt ${promptNum2} (${counts.title[promptNum2]})`;
+            descriptionStats.textContent = `Description: Prompt ${promptNum1} (${counts.description[promptNum1]}) - Prompt ${promptNum2} (${counts.description[promptNum2]})`;
+            tagsStats.textContent = `Tags: Prompt ${promptNum1} (${counts.tags[promptNum1]}) - Prompt ${promptNum2} (${counts.tags[promptNum2]})`;
+            
+            // Update progress info if gallery view is active
+            if (galleryView.style.display === 'block') {
+                updateProgressInfo();
+            }
+        }
+        
+        // Event listeners
+        imageSelect.addEventListener('change', () => {
+            currentIndex = parseInt(imageSelect.value);
+            if (currentIndex >= 0) {
+                updateDisplay(currentIndex);
+            }
+        });
+        
+        // Handle votes in both single view and gallery view
+        document.addEventListener('click', e => {
+            if (e.target.classList.contains('vote-btn')) {
+                const promptNum = e.target.getAttribute('data-prompt');
+                const section = e.target.getAttribute('data-section');
+                const specificImage = e.target.getAttribute('data-image');
+                
+                // Determine which image we're working with
+                let targetImageName;
+                if (specificImage) {
+                    // Gallery view
+                    targetImageName = specificImage;
+                } else {
+                    // Single view
+                    targetImageName = imageData[currentIndex].name;
+                }
+                
+                // Save preference for this section
+                preferences[section][targetImageName] = promptNum;
+                localStorage.setItem('sectionPreferences', JSON.stringify(preferences));
+                
+                // Update UI in the specific view
+                if (specificImage) {
+                    // Gallery view - update only buttons for this image and section
+                    const sectionBtns = document.querySelectorAll(`.vote-btn[data-section="${section}"][data-image="${targetImageName}"]`);
+                    sectionBtns.forEach(btn => {
+                        btn.classList.remove('selected');
+                    });
+                    e.target.classList.add('selected');
+                } else {
+                    // Single view
+                    const sectionBtns = document.querySelectorAll(`.vote-btn[data-section="${section}"]:not([data-image])`);
+                    sectionBtns.forEach(btn => {
+                        btn.classList.remove('selected');
+                    });
+                    e.target.classList.add('selected');
+                }
+                
+                // Update stats
+                countPreferences();
+            }
+        });
+        
+        prevBtn.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                imageSelect.value = currentIndex;
+                updateDisplay(currentIndex);
+            }
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            if (currentIndex < imageData.length - 1) {
+                currentIndex++;
+                imageSelect.value = currentIndex;
+                updateDisplay(currentIndex);
+            }
+        });
+        
+        // Add export functionality
+        const exportBtn = document.getElementById('export-btn');
+        
+        exportBtn.addEventListener('click', () => {
+            exportResults();
+        });
+        
+        function exportResults() {
+            // Create CSV content
+            let csvContent = "Image Name,Section,Selected Prompt\n";
+            
+            // Add data for each section type
+            ['title', 'description', 'tags'].forEach(section => {
+                Object.entries(preferences[section]).forEach(([imageName, promptNum]) => {
+                    csvContent += `${imageName},${section},${promptNum}\n`;
+                });
+            });
+            
+            // Add summary data
+            csvContent += "\nSUMMARY STATISTICS\n";
+            csvContent += `Section,Prompt ${promptNum1} Votes,Prompt ${promptNum2} Votes\n`;
+            
+            // Count votes by section (re-initialize for safety, or ensure counts is up-to-date)
+            const currentCounts = {
+                title: {}, description: {}, tags: {}
+            };
+            currentCounts.title[promptNum1] = 0; currentCounts.title[promptNum2] = 0;
+            currentCounts.description[promptNum1] = 0; currentCounts.description[promptNum2] = 0;
+            currentCounts.tags[promptNum1] = 0; currentCounts.tags[promptNum2] = 0;
+
+            Object.keys(preferences).forEach(section => {
+                Object.values(preferences[section]).forEach(votePromptNum => {
+                     if (currentCounts[section] && currentCounts[section].hasOwnProperty(votePromptNum)) {
+                        currentCounts[section][votePromptNum]++;
+                    }
+                });
+            });
+            
+            // Add summary rows
+            Object.entries(currentCounts).forEach(([section, countData]) => {
+                csvContent += `${section},${countData[promptNum1]},${countData[promptNum2]}\n`;
+            });
+            
+            // Create a Blob with the CSV content
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            
+            // Create a link element to trigger the download
+            const link = document.createElement('a');
+            const date = new Date().toISOString().split('T')[0];
+            link.href = url;
+            link.setAttribute('download', `prompt-comparison-votes-${date}.csv`);
+            link.style.visibility = 'hidden';
+            
+            // Add the link to the DOM and trigger the download
+            document.body.appendChild(link);
+            link.click();
+            
+            // Clean up
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+            
+            alert(`Exported ${Object.keys(preferences.title).length + 
+                  Object.keys(preferences.description).length + 
+                  Object.keys(preferences.tags).length} votes to CSV file.`);
+        }
+        
+        // Initialize
+        if (typeof imageData !== 'undefined' && imageData.length > 0 && typeof promptKey1 !== 'undefined' && typeof promptKey2 !== 'undefined') {
+            initializeStaticText(); // Set up headers and button data-prompts
+            initImageSelector();
+            countPreferences();
+            
+            // Auto-select the first image on page load
+            if (imageData.length > 0) {
+                currentIndex = 0;
+                imageSelect.value = currentIndex;
+                updateDisplay(currentIndex);
+            }
+        } else {
+            document.querySelector('.comparison').innerHTML = '<div class="loading">No image data available. Please run generate_data.py first.</div>';
+        }
+    </script>
+</body>
+</html>
