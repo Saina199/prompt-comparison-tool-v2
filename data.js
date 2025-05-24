@@ -4,7 +4,7 @@ const promptKey2 = "prompt_6";
 const imageData = [
     {
         "name": "keurig",
-        "localImagePath": "../imgs/EsterKeurig/resizeImgs/keurig.png",
+        "localImagePath": "./resizeImgs/keurig.png",
         "prompt_2": {
             "title": "Close-Up of Keurig Coffee Maker Logo",
             "description": "This image features a close-up view of a Keurig coffee maker, prominently displaying the brand's logo on the machine's metallic surface. The focus is on the sleek, modern design of the coffee maker, highlighting its brushed metal finish. The setting suggests a kitchen or office environment, emphasizing the appliance's role in daily coffee brewing routines.",
