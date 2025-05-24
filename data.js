@@ -4,7 +4,7 @@ const promptKey2 = "prompt_6";
 const imageData = [
     {
         "name": "keurig",
-        "localImagePath": "./resizeImgs/keurig.png",
+        "localImagePath": "resizeImgs/keurig.png",
         "prompt_2": {
             "title": "Close-Up of Keurig Coffee Maker Logo",
             "description": "This image features a close-up view of a Keurig coffee maker, prominently displaying the brand's logo on the machine's metallic surface. The focus is on the sleek, modern design of the coffee maker, highlighting its brushed metal finish. The setting suggests a kitchen or office environment, emphasizing the appliance's role in daily coffee brewing routines.",
@@ -40,7 +40,7 @@ const imageData = [
     },
     {
         "name": "kr2",
-        "localImagePath": "../imgs/EsterKeurig/resizeImgs/kr2.png",
+        "localImagePath": "resizeImgs/kr2.png",
         "prompt_2": {
             "title": "Keurig 2.0 Launch Event with Coffee Machine Display",
             "description": "The image captures a promotional event for the Keurig 2.0 coffee machine, featuring a sleek display setup. The setting is a modern showroom with two large screens showcasing the Keurig 2.0 branding and slogan 'Say Hello to Keurig 2.0: Brew a Cup, Brew a Carafe.' The coffee machine is prominently displayed on a minimalist stand, emphasizing its contemporary design. The atmosphere is professional and inviting, with a neutral color palette that complements the product's stylish appearance.",
@@ -75,7 +75,7 @@ const imageData = [
     },
     {
         "name": "Keurig_Logo",
-        "localImagePath": "../imgs/EsterKeurig/resizeImgs/Keurig_Logo.png",
+        "localImagePath": "resizeImgs/Keurig_Logo.png",
         "prompt_2": {
             "title": "Keurig Logo on Black Background",
             "description": "The image prominently features the Keurig logo centered on a solid black background. The logo is displayed in a bold, white font, creating a stark contrast against the dark backdrop. This minimalist design emphasizes the brand's name, making it easily recognizable and memorable.",
@@ -107,7 +107,7 @@ const imageData = [
     },
     {
         "name": "adidasLogo",
-        "localImagePath": "../imgs/EsterKeurig/resizeImgs/adidasLogo.png",
+        "localImagePath": "resizeImgs/adidasLogo.png",
         "prompt_2": {
             "title": "Adidas Logo on Black Background",
             "description": "A minimalist image featuring the iconic Adidas logo prominently displayed against a solid black background. The logo consists of three white diagonal stripes, symbolizing the brand's commitment to performance and style. The stark contrast between the white logo and the black background creates a bold and striking visual effect, emphasizing the simplicity and strength of the Adidas brand identity.",
@@ -141,7 +141,7 @@ const imageData = [
     },
     {
         "name": "drPepper",
-        "localImagePath": "../imgs/EsterKeurig/resizeImgs/drPepper.png",
+        "localImagePath": "resizeImgs/drPepper.png",
         "prompt_2": {
             "title": "Dr Pepper Bottles in Refrigerated Display",
             "description": "A row of Dr Pepper 2-liter bottles is prominently displayed in a refrigerated section, showcasing the brand's distinctive red and white label with the SEC logo. The bottles are neatly arranged alongside Pepsi bottles, creating a contrast between the two popular soda brands. The setting is a typical grocery store or convenience store cooler, emphasizing the availability and accessibility of these beverages.",
@@ -179,7 +179,7 @@ const imageData = [
     },
     {
         "name": "arabica_coffee",
-        "localImagePath": "../imgs/EsterKeurig/resizeImgs/arabica_coffee.png",
+        "localImagePath": "resizeImgs/arabica_coffee.png",
         "prompt_2": {
             "title": "Tully's Coffee Breakfast Blend Packaging",
             "description": "The image showcases a box of Tully's Coffee Breakfast Blend, featuring a vibrant rooster illustration on the left side. The packaging prominently displays the Tully's Coffee logo in the top right corner, with the words 'Breakfast Blend 100% Arabica Coffee' in bold text. The Keurig logo is also visible, indicating compatibility with Keurig brewing systems. The box contains 18 K-Cup pods, as noted on the lower section of the packaging.",
@@ -218,7 +218,7 @@ const imageData = [
     },
     {
         "name": "ELauder",
-        "localImagePath": "../imgs/EsterKeurig/resizeImgs/ELauder.png",
+        "localImagePath": "resizeImgs/ELauder.png",
         "prompt_2": {
             "title": "Est\u00e9e Lauder Youth Dew Eau de Parfum Bottle",
             "description": "A sleek, turquoise bottle of Est\u00e9e Lauder's Youth Dew Eau de Parfum stands against a minimalist gray background. The bottle features a gold cap, adding a touch of elegance to its design. The brand's name and product details are prominently displayed in black text on the front, enhancing its classic and sophisticated appeal.",
@@ -253,7 +253,7 @@ const imageData = [
     },
     {
         "name": "coffee_pots",
-        "localImagePath": "../imgs/EsterKeurig/resizeImgs/coffee_pots.png",
+        "localImagePath": "resizeImgs/coffee_pots.png",
         "prompt_2": {
             "title": "Donut Shop Blend Coffee Pods on Black Background",
             "description": "A collection of white coffee pods labeled 'Donut Shop Blend' are arranged against a stark black background. The pods feature a purple and white lid design, highlighting the text '100% Arabica Coffee' and a colorful logo. The minimalist setting emphasizes the product's sleek and modern packaging, ideal for coffee enthusiasts seeking convenience and quality.",
@@ -288,7 +288,7 @@ const imageData = [
     },
     {
         "name": "maxwell_house",
-        "localImagePath": "../imgs/EsterKeurig/resizeImgs/maxwell_house.png",
+        "localImagePath": "resizeImgs/maxwell_house.png",
         "prompt_2": {
             "title": "Maxwell House Caf\u00e9 Collection Coffee Box",
             "description": "This image features a box of Maxwell House Caf\u00e9 Collection, showcasing their House Blend medium roast coffee. The packaging is predominantly blue with a striking orange accent at the top, highlighting the 'New' label. The box is designed for use in Keurig K-Cup brewing systems and contains 12 single-serve cups of 100% Arabica coffee. The Maxwell House logo is prominently displayed, emphasizing the brand's identity.",
@@ -325,7 +325,7 @@ const imageData = [
     },
     {
         "name": "amberMusk",
-        "localImagePath": "../imgs/EsterKeurig/resizeImgs/amberMusk.png",
+        "localImagePath": "resizeImgs/amberMusk.png",
         "prompt_2": {
             "title": "AERIN Amber Musk Body Cream with Packaging",
             "description": "The image showcases AERIN's Amber Musk Body Cream, elegantly presented alongside its decorative packaging. The cream is housed in a sleek, white tube with a gold cap, exuding a sense of luxury and sophistication. The packaging features intricate floral patterns in earthy tones, complementing the product's refined aesthetic. The AERIN logo and product details are prominently displayed, emphasizing the brand's commitment to quality and elegance.",
@@ -362,7 +362,7 @@ const imageData = [
     },
     {
         "name": "Fleur De",
-        "localImagePath": "../imgs/EsterKeurig/resizeImgs/Fleur De.png",
+        "localImagePath": "resizeImgs/Fleur De.png",
         "prompt_2": {
             "title": "AERIN Fleur de Peony Eau de Parfum Bottle",
             "description": "The image showcases a bottle of AERIN Fleur de Peony Eau de Parfum, elegantly designed with a clear glass body that reveals a soft pink fragrance inside. The bottle is topped with a distinctive pink cap and features a gold accent around the neck, adding a touch of luxury. The AERIN logo and product name are prominently displayed on the front, emphasizing the brand's sophisticated aesthetic.",
@@ -399,7 +399,7 @@ const imageData = [
     },
     {
         "name": "PE275-US-SP25_SU_GWP-pc-header",
-        "localImagePath": "../imgs/EsterKeurig/resizeImgs/PE275-US-SP25_SU_GWP-pc-header.png",
+        "localImagePath": "resizeImgs/PE275-US-SP25_SU_GWP-pc-header.png",
         "prompt_2": {
             "title": "Est\u00e9e Lauder Skincare Trio Promotion",
             "description": "This image showcases a promotional offer from Est\u00e9e Lauder featuring a trio of skincare products. The background is a vibrant coral with sunburst patterns, highlighting the products in the foreground. The featured items include a full-size Perfectly Clean Cleanser, a choice of moisturizer, and the Advanced Night Repair serum. The text overlay guides the viewer through the selection process, emphasizing the brand's luxurious skincare offerings.",
@@ -434,7 +434,7 @@ const imageData = [
     },
     {
         "name": "Youth-Dew",
-        "localImagePath": "../imgs/EsterKeurig/resizeImgs/Youth-Dew.png",
+        "localImagePath": "resizeImgs/Youth-Dew.png",
         "prompt_2": {
             "title": "Estee Lauder Youth-Dew Roll-On Deodorant",
             "description": "The image showcases Estee Lauder's Youth-Dew Roll-On Deodorant, a sleek and elegant personal care product. Set against a minimalist light gray background, the deodorant features a mint green cylindrical bottle with a ribbed cap, exuding a fresh and clean aesthetic. The Estee Lauder logo and product name are prominently displayed in gold, adding a touch of luxury to the design.",
@@ -469,7 +469,7 @@ const imageData = [
     },
     {
         "name": "lambada",
-        "localImagePath": "../imgs/EsterKeurig/resizeImgs/lambada.png",
+        "localImagePath": "resizeImgs/lambada.png",
         "prompt_2": {
             "title": "Monochromatic Beige Beauty Product Display",
             "description": "A collection of beauty products is artfully arranged against a monochromatic beige backdrop, creating a minimalist and cohesive aesthetic. The assortment includes a pump bottle, tube, spray bottle, dropper bottle, and a nail polish bottle, all in matching beige tones. A beige hairbrush adds a touch of texture to the composition. The overall mood is calm and sophisticated, emphasizing simplicity and elegance in personal care packaging.",
@@ -507,7 +507,7 @@ const imageData = [
     },
     {
         "name": "laptop",
-        "localImagePath": "../imgs/EsterKeurig/resizeImgs/laptop.png",
+        "localImagePath": "resizeImgs/laptop.png",
         "prompt_2": {
             "title": "Lenovo Laptop with AMD Ryzen 3 and Windows 11",
             "description": "This image showcases a sleek Lenovo laptop featuring a 15.6-inch screen, ideal for both work and entertainment. The laptop is powered by an AMD Ryzen 3 processor, ensuring efficient performance with 4GB of memory and a 128GB SSD for storage. The display highlights the Windows 11 operating system, offering a modern interface and enhanced user experience. The overall design is minimalist, with a focus on functionality and style.",
@@ -540,7 +540,7 @@ const imageData = [
     },
     {
         "name": "getty",
-        "localImagePath": "../imgs/EsterKeurig/resizeImgs/getty.png",
+        "localImagePath": "resizeImgs/getty.png",
         "prompt_2": {
             "title": "Woman Holding DKNY Perfume Bottle",
             "description": "A woman is holding a round DKNY perfume bottle close to her face, showcasing the elegant design of the fragrance container. The setting appears to be indoors, possibly at a promotional event or a personal moment of fragrance application. The image captures the essence of luxury and sophistication, with the woman's attire featuring a patterned top and a gold necklace with a circular pendant. The background is softly blurred, highlighting the perfume as the focal point.",
@@ -576,7 +576,7 @@ const imageData = [
     },
     {
         "name": "Wakin-The-Neighbors-Coffee-K-Cup-Black-Rifle-Coffee_alt5",
-        "localImagePath": "../imgs/EsterKeurig/resizeImgs/Wakin-The-Neighbors-Coffee-K-Cup-Black-Rifle-Coffee_alt5.png",
+        "localImagePath": "resizeImgs/Wakin-The-Neighbors-Coffee-K-Cup-Black-Rifle-Coffee_alt5.png",
         "prompt_2": {
             "title": "Black Rifle Coffee Medium Roast K-Cup Pods",
             "description": "This image showcases Black Rifle Coffee Company's medium roast K-Cup pods, labeled 'Wakin' The Neighbors.' The pods are designed for Keurig machines and feature a vibrant label with a sunset-inspired palette. The recyclable packaging is highlighted with a green recycling symbol, emphasizing sustainability. A roast profile chart is displayed, indicating the medium roast level with a color gradient from light to dark.",
@@ -609,7 +609,7 @@ const imageData = [
     },
     {
         "name": "original-blend-coffee-dd_BIN_4",
-        "localImagePath": "../imgs/EsterKeurig/resizeImgs/original-blend-coffee-dd_BIN_4.png",
+        "localImagePath": "resizeImgs/original-blend-coffee-dd_BIN_4.png",
         "prompt_2": {
             "title": "Dunkin' Medium Roast Coffee Pods Packaging",
             "description": "This image showcases Dunkin' Original Blend Medium Roast coffee pods designed for Keurig machines. The pods are prominently displayed with a vibrant orange and white color scheme, featuring the Dunkin' logo and text indicating the medium roast profile. The recyclable K-Cup pods are highlighted with an eco-friendly symbol, emphasizing sustainability. A roast profile chart at the bottom illustrates the medium roast level, appealing to coffee enthusiasts seeking a balanced flavor.",
@@ -646,7 +646,7 @@ const imageData = [
     },
     {
         "name": "005_K-Cafe_Travel_Mug_Friendly_Silver",
-        "localImagePath": "../imgs/EsterKeurig/resizeImgs/005_K-Cafe_Travel_Mug_Friendly_Silver.png",
+        "localImagePath": "resizeImgs/005_K-Cafe_Travel_Mug_Friendly_Silver.png",
         "prompt_2": {
             "title": "Keurig Coffee Maker with Travel Mug Compatibility",
             "description": "This image showcases a sleek Keurig coffee maker designed to accommodate a 7.2-inch travel mug, perfect for on-the-go coffee lovers. The machine features a modern silver finish with a compact design, ideal for kitchen countertops. The Keurig logo is prominently displayed on both the coffee maker and the travel mug, emphasizing brand identity. The setting is minimalistic, highlighting the product's functionality and style.",
@@ -681,7 +681,7 @@ const imageData = [
     },
     {
         "name": "bronze-Goddess",
-        "localImagePath": "../imgs/EsterKeurig/resizeImgs/bronze-Goddess.png",
+        "localImagePath": "resizeImgs/bronze-Goddess.png",
         "prompt_2": {
             "title": "Est\u00e9e Lauder Bronze Goddess Perfume Bottle Display",
             "description": "The image showcases a luxurious bottle of Est\u00e9e Lauder's Bronze Goddess perfume, prominently featuring the brand's logo and product name. The bottle is elegantly designed with a clear glass body and a metallic cap, exuding sophistication and allure. The setting is minimalistic, with a soft gray background that highlights the perfume's refined aesthetic and the warm, inviting tones of the fragrance.",
@@ -716,7 +716,7 @@ const imageData = [
     },
     {
         "name": "whoShe",
-        "localImagePath": "../imgs/EsterKeurig/resizeImgs/whoShe.png",
+        "localImagePath": "resizeImgs/whoShe.png",
         "prompt_2": {
             "title": "Who Is Esther SHE Eau de Parfum Bottle",
             "description": "The image showcases a bottle of 'Who Is Esther SHE' Eau de Parfum, elegantly designed with a minimalist aesthetic. The perfume bottle features a sleek black cap and clear glass, allowing the pale yellow fragrance to be visible. Positioned against a clean white background, the bottle is accompanied by delicate pink flowers, adding a touch of femininity and freshness to the scene. The overlay text on the bottle highlights the brand and product name, emphasizing its sophisticated appeal.",
@@ -752,7 +752,7 @@ const imageData = [
     },
     {
         "name": "roseDegrass",
-        "localImagePath": "../imgs/EsterKeurig/resizeImgs/roseDegrass.png",
+        "localImagePath": "resizeImgs/roseDegrass.png",
         "prompt_2": {
             "title": "AERIN Rose de Grasse Limited Edition Perfume",
             "description": "The image showcases the AERIN Rose de Grasse Limited Edition perfume, elegantly presented in a striking red bottle adorned with a luxurious gold cap and a matching red bow. The packaging features a sophisticated floral pattern, enhancing the opulent feel of the product. The perfume box, also in red, complements the bottle and highlights the brand's name and fragrance details in gold lettering, creating a sense of exclusivity and luxury.",
@@ -788,7 +788,7 @@ const imageData = [
     },
     {
         "name": "photo-credits",
-        "localImagePath": "../imgs/EsterKeurig/resizeImgs/photo-credits.png",
+        "localImagePath": "resizeImgs/photo-credits.png",
         "prompt_2": {
             "title": "Guide to Photo Credits for Beginners",
             "description": "A person is seated at a round black table, typing on a laptop with the word 'Search' visible on the screen. A warm cup of coffee sits nearby, suggesting a cozy and focused setting. The image is framed with a blue background and features the text 'Photo Credits for Dummies: A Brief Guide' in bold yellow and white fonts, indicating an educational theme. The overall mood is informative and inviting, with a modern and clean design style.",
@@ -825,7 +825,7 @@ const imageData = [
     },
     {
         "name": "coffeeCup",
-        "localImagePath": "../imgs/EsterKeurig/resizeImgs/coffeeCup.png",
+        "localImagePath": "resizeImgs/coffeeCup.png",
         "prompt_2": {
             "title": "Keurig Coffee Cup in Modern Kitchen Setting",
             "description": "A Keurig-branded paper coffee cup is prominently displayed in front of a sleek coffee machine, suggesting a modern kitchen or office environment. The cup features the Keurig logo and the slogan 'Brew what you love, simply,' emphasizing the brand's focus on convenience and quality. The scene is set against a backdrop of stacked white cups, adding to the professional and organized atmosphere.",
@@ -863,7 +863,7 @@ const imageData = [
     },
     {
         "name": "facial_and_body_anointing_oil",
-        "localImagePath": "../imgs/EsterKeurig/resizeImgs/facial_and_body_anointing_oil.png",
+        "localImagePath": "resizeImgs/facial_and_body_anointing_oil.png",
         "prompt_2": {
             "title": "Sheleena Racquel Handcrafted Herbal Body Oil Display",
             "description": "This image showcases several bottles of Sheleena Racquel's handcrafted herbal body oil, elegantly arranged on a textured golden surface. The bottles are surrounded by dried pink flowers, adding a touch of natural beauty and sophistication to the setting. The labels on the bottles prominently feature the product name and brand, emphasizing the organic and artisanal nature of the oil. The overall mood is warm and inviting, with a palette of gold and pink creating a luxurious and calming atmosphere.",
@@ -900,7 +900,7 @@ const imageData = [
     },
     {
         "name": "CD_ClubSoda_10oz_GLS_6pk_HC_eComm_10000758_Ft",
-        "localImagePath": "../imgs/EsterKeurig/resizeImgs/CD_ClubSoda_10oz_GLS_6pk_HC_eComm_10000758_Ft.png",
+        "localImagePath": "resizeImgs/CD_ClubSoda_10oz_GLS_6pk_HC_eComm_10000758_Ft.png",
         "prompt_2": {
             "title": "Canada Dry Club Soda 10oz Bottles Pack",
             "description": "This image showcases a six-pack of Canada Dry Club Soda, each bottle containing 10 fluid ounces. The bottles are neatly arranged in a transparent plastic carrier, highlighting the brand's iconic logo prominently displayed on the blue label. The packaging emphasizes the soda's zero-calorie content, making it a refreshing choice for health-conscious consumers. The overall presentation is clean and straightforward, focusing on the product's branding and nutritional information.",
@@ -936,7 +936,7 @@ const imageData = [
     },
     {
         "name": "original-blend-coffee-dd_BIN_1",
-        "localImagePath": "../imgs/EsterKeurig/resizeImgs/original-blend-coffee-dd_BIN_1.png",
+        "localImagePath": "resizeImgs/original-blend-coffee-dd_BIN_1.png",
         "prompt_2": {
             "title": "Dunkin' Original Blend K-Cup Pods Packaging",
             "description": "This image showcases a box of Dunkin' Original Blend K-Cup Pods, prominently featuring the Dunkin' logo on a white coffee mug filled with steaming coffee. The packaging highlights the medium roast flavor and contains 22 recyclable pods, as indicated by the recycling symbol. The vibrant orange and brown color palette reflects the brand's signature style, appealing to coffee enthusiasts seeking convenience and quality.",
@@ -974,7 +974,7 @@ const imageData = [
     },
     {
         "name": "Wakin-The-Neighbors-Coffee-K-Cup-Black-Rifle-Coffee_alt1",
-        "localImagePath": "../imgs/EsterKeurig/resizeImgs/Wakin-The-Neighbors-Coffee-K-Cup-Black-Rifle-Coffee_alt1.png",
+        "localImagePath": "resizeImgs/Wakin-The-Neighbors-Coffee-K-Cup-Black-Rifle-Coffee_alt1.png",
         "prompt_2": {
             "title": "Black Rifle Coffee Wakin' The Neighbors Medium Roast",
             "description": "The image showcases a box of Black Rifle Coffee Company's 'Wakin' The Neighbors' medium roast coffee pods. The packaging features a vibrant illustration of a rooster holding a coffee mug, set against a colorful dawn sky. Prominent text highlights the higher caffeine content, and the Black Rifle Coffee Company logo is clearly visible. The box contains 22 recyclable K-Cup pods, suitable for Keurig machines.",
@@ -1013,7 +1013,7 @@ const imageData = [
     },
     {
         "name": "sugared",
-        "localImagePath": "../imgs/EsterKeurig/resizeImgs/sugared.png",
+        "localImagePath": "resizeImgs/sugared.png",
         "prompt_2": {
             "title": "Darlin' Skincare Sugared Citrus Body Balm Packaging",
             "description": "The image showcases a vibrant orange jar of Darlin' Skincare Sugared Citrus Body Balm, prominently displayed alongside its matching box. The packaging features elegant script branding and highlights the product as an all-over tallow moisturizer. The background is a soft, neutral tone, enhancing the warm and inviting color palette of the product. The overall mood is fresh and rejuvenating, appealing to skincare enthusiasts.",
@@ -1052,7 +1052,7 @@ const imageData = [
     },
     {
         "name": "honey Stock",
-        "localImagePath": "../imgs/EsterKeurig/resizeImgs/honey Stock.png",
+        "localImagePath": "resizeImgs/honey Stock.png",
         "prompt_2": {
             "title": "AERIN Mediterranean Honeysuckle Perfume with Floral Decor",
             "description": "The image showcases a bottle of AERIN Mediterranean Honeysuckle perfume elegantly placed on a woven surface. The setting is adorned with vibrant purple flowers in a wicker basket, creating a fresh and inviting atmosphere. The perfume bottle, with its clear glass and gold accents, stands out amidst the lush floral arrangement. A string of pink beads adds a touch of sophistication to the scene, enhancing the overall aesthetic appeal.",
@@ -1088,7 +1088,7 @@ const imageData = [
     },
     {
         "name": "Legacy",
-        "localImagePath": "../imgs/EsterKeurig/resizeImgs/Legacy.png",
+        "localImagePath": "resizeImgs/Legacy.png",
         "prompt_2": {
             "title": "Est\u00e9e Lauder Legacy Perfume Bottle on Light Background",
             "description": "The image showcases a luxurious Est\u00e9e Lauder Legacy perfume bottle set against a soft, light background. The bottle features a sleek design with vertical ridges and a gold-toned cap, exuding elegance and sophistication. The label prominently displays the Est\u00e9e Lauder logo, emphasizing the brand's prestige. The overall mood is refined and classic, with a palette of gold and clear glass enhancing the opulent style.",
@@ -1125,7 +1125,7 @@ const imageData = [
     },
     {
         "name": "CD_ClubSoda_10oz_PET_6pk_eComm_10114955_Lt",
-        "localImagePath": "../imgs/EsterKeurig/resizeImgs/CD_ClubSoda_10oz_PET_6pk_eComm_10114955_Lt.png",
+        "localImagePath": "resizeImgs/CD_ClubSoda_10oz_PET_6pk_eComm_10114955_Lt.png",
         "prompt_2": {
             "title": "Canada Dry Club Soda Bottles in Pack of Six",
             "description": "This image features a pack of six Canada Dry Club Soda bottles, prominently displaying the brand's logo and signature design. The bottles are arranged in a neat formation, showcasing their clear plastic material and blue label with white and green accents. The label highlights the club soda's low sodium content and zero calories, appealing to health-conscious consumers. The overall mood is refreshing and clean, with a focus on hydration and quality.",
@@ -1162,7 +1162,7 @@ const imageData = [
     },
     {
         "name": "002_K-Cafe_Features_Silver",
-        "localImagePath": "../imgs/EsterKeurig/resizeImgs/002_K-Cafe_Features_Silver.png",
+        "localImagePath": "resizeImgs/002_K-Cafe_Features_Silver.png",
         "prompt_2": {
             "title": "Keurig Coffee Maker with Frother and Cup Size Options",
             "description": "This image showcases a sleek Keurig coffee maker designed for brewing coffee, lattes, and cappuccinos with ease. The machine is set against a plain background, highlighting its modern design and functionality. Key features include a dishwasher-safe frother for fresh milk, a strong brew option for intense coffee, and the ability to choose from four cup sizes. The Keurig logo is prominently displayed, emphasizing brand recognition.",
